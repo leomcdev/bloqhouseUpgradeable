@@ -19,7 +19,7 @@
   "impls": {
     "546238fd090b592e5d9b701c26adeccc9b12c4810b18688e293028cb5163a324": {
       "address": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
-      "txHash": "0xcb9d674c11202df76ece545b6ae23b5fa2ddb3daca208cf023eaa1a7cbd67021",
+      "txHash": "0xbbdfa79ed681ecf0a7d85d4af63a622dabd4372d15ecb3b160bac3eee38fac19",
       "layout": {
         "solcVersion": "0.8.4",
         "storage": [
@@ -148,7 +148,7 @@
             "label": "CNR",
             "offset": 0,
             "slot": "251",
-            "type": "t_contract(ICNR)3528",
+            "type": "t_contract(ICNR)3524",
             "contract": "Asset",
             "src": "contracts/Asset.sol:29"
           },
@@ -230,15 +230,15 @@
             "slot": "1260",
             "type": "t_address",
             "contract": "Handler",
-            "src": "contracts/Handler.sol:18"
+            "src": "contracts/Handler.sol:13"
           },
           {
             "label": "IState",
             "offset": 0,
             "slot": "1261",
-            "type": "t_contract(IAssetIssuerState)3516",
+            "type": "t_contract(IAssetIssuerState)3512",
             "contract": "Handler",
-            "src": "contracts/Handler.sol:19"
+            "src": "contracts/Handler.sol:14"
           }
         ],
         "types": {
@@ -270,11 +270,11 @@
             "label": "bytes32",
             "numberOfBytes": "32"
           },
-          "t_contract(IAssetIssuerState)3516": {
+          "t_contract(IAssetIssuerState)3512": {
             "label": "contract IAssetIssuerState",
             "numberOfBytes": "20"
           },
-          "t_contract(ICNR)3528": {
+          "t_contract(ICNR)3524": {
             "label": "contract ICNR",
             "numberOfBytes": "20"
           },
