@@ -11,12 +11,12 @@ import "@openzeppelin/contracts/security/Pausable.sol";
 import "../interfaces/ICNR.sol";
 
 // ------------ upgradeable contract
+
 // execution contract
 contract Asset is Initializable, ERC721Upgradeable, AccessControlUpgradeable {
     // function initializeAsset() internal onlyInitializing {
     //     __ERC721_init("name", "symbol");
     //     // CNR?
-
     // }
 
     bytes32 public constant HANDLER = keccak256("HANDLER");
