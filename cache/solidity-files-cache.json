@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/leo/Desktop/bloqhouse/contracts/Asset.sol": {
-      "lastModificationDate": 1667471876569,
-      "contentHash": "afabec89c2315375cafcb6a7c984ee8d",
+      "lastModificationDate": 1667472326805,
+      "contentHash": "0d1c669c526e3d0bdc2c005b932788f3",
       "sourceName": "contracts/Asset.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -649,8 +649,8 @@
       ]
     },
     "/Users/leo/Desktop/bloqhouse/contracts/Handler.sol": {
-      "lastModificationDate": 1667471828783,
-      "contentHash": "4170a34d571ce5fbdc295bb94feb2c6e",
+      "lastModificationDate": 1667472081874,
+      "contentHash": "b52a8909f3a7bde37e9c8a59e0a4d475",
       "sourceName": "contracts/Handler.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -1421,8 +1421,8 @@
       ]
     },
     "/Users/leo/Desktop/bloqhouse/contracts/AssetProxy.sol": {
-      "lastModificationDate": 1667469694541,
-      "contentHash": "674e274f6e3413adfe632a4da40fcd01",
+      "lastModificationDate": 1667474161906,
+      "contentHash": "072379b7caf50934e0e69dc90f431e7a",
       "sourceName": "contracts/AssetProxy.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -1458,38 +1458,6 @@
       "artifacts": [
         "AssetProxy"
       ]
-    },
-    "/Users/leo/Desktop/bloqhouse/contracts/AssetOneFile.sol": {
-      "lastModificationDate": 1667400546610,
-      "contentHash": "6102076a8cde1eb32104e20214b54d64",
-      "sourceName": "contracts/AssetOneFile.sol",
-      "solcConfig": {
-        "version": "0.8.4",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata",
-                "storageLayout"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [],
-      "artifacts": []
     }
   }
 }

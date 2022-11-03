@@ -2,7 +2,7 @@
   "manifestVersion": "3.2",
   "admin": {
     "address": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
-    "txHash": "0x2451aa63f63011ba9be12f8bfb80513cbbde805b8e6bf93803a6f251293ebe48"
+    "txHash": "0x95d97516ee2b146c3a553086ed9ab8cf761d312330edc1459128ac79b57a61c9"
   },
   "proxies": [
     {
@@ -22,19 +22,19 @@
     },
     {
       "address": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
-      "txHash": "0xdc055e2a5fbcb6e07720bdd2852f856c2008fa9212a3e7ec61a8fdeff13948f4",
+      "txHash": "0xa506f88b4a08b3aa611e2b5dc363326211837f40fbbcb5ddeb017c42091b143f",
       "kind": "transparent"
     },
     {
       "address": "0x8A791620dd6260079BF849Dc5567aDC3F2FdC318",
-      "txHash": "0x389acc322794c401db517e3edd6aef2698626bec2eb173ee4b74382381c24f3f",
+      "txHash": "0x42cece1508900ae917dfad263315a0af2b4ca7f0d948c1a76594a9228dcc669a",
       "kind": "transparent"
     }
   ],
   "impls": {
     "b5a3a48623b7bf6483cf53d0d67e201903631ff95225111e5d8c1bdd7c2b958b": {
       "address": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
-      "txHash": "0x634d49fddd1067826ec2123378077d2c45f7a712a2a087ff15f037bd98bc4409",
+      "txHash": "0xc302c864eb78660ddad57d05eb8865478e04c48b3619016ae8af15f25dfe3aac",
       "layout": {
         "solcVersion": "0.8.4",
         "storage": [
@@ -149,7 +149,7 @@
             "slot": "201",
             "type": "t_contract(ICNR)7277",
             "contract": "Asset",
-            "src": "contracts/Asset.sol:23"
+            "src": "contracts/Asset.sol:24"
           },
           {
             "label": "isWhitelisted",
@@ -157,7 +157,7 @@
             "slot": "202",
             "type": "t_mapping(t_address,t_bool)",
             "contract": "Asset",
-            "src": "contracts/Asset.sol:24"
+            "src": "contracts/Asset.sol:25"
           },
           {
             "label": "pausedTransfers",
@@ -165,7 +165,7 @@
             "slot": "203",
             "type": "t_bool",
             "contract": "Asset",
-            "src": "contracts/Asset.sol:26"
+            "src": "contracts/Asset.sol:27"
           },
           {
             "label": "assetPaused",
@@ -173,7 +173,7 @@
             "slot": "204",
             "type": "t_mapping(t_uint256,t_bool)",
             "contract": "Asset",
-            "src": "contracts/Asset.sol:27"
+            "src": "contracts/Asset.sol:28"
           },
           {
             "label": "nextId",
@@ -181,7 +181,7 @@
             "slot": "205",
             "type": "t_mapping(t_uint256,t_uint256)",
             "contract": "Asset",
-            "src": "contracts/Asset.sol:29"
+            "src": "contracts/Asset.sol:30"
           },
           {
             "label": "lastId",
@@ -189,7 +189,7 @@
             "slot": "206",
             "type": "t_mapping(t_uint256,t_uint256)",
             "contract": "Asset",
-            "src": "contracts/Asset.sol:30"
+            "src": "contracts/Asset.sol:31"
           },
           {
             "label": "assetRevToken",
@@ -197,7 +197,7 @@
             "slot": "207",
             "type": "t_mapping(t_uint256,t_contract(IERC20Upgradeable)641)",
             "contract": "Asset",
-            "src": "contracts/Asset.sol:32"
+            "src": "contracts/Asset.sol:33"
           },
           {
             "label": "totalShareRev",
@@ -205,7 +205,7 @@
             "slot": "208",
             "type": "t_mapping(t_uint256,t_uint256)",
             "contract": "Asset",
-            "src": "contracts/Asset.sol:33"
+            "src": "contracts/Asset.sol:34"
           },
           {
             "label": "claimedRev",
@@ -213,7 +213,7 @@
             "slot": "209",
             "type": "t_mapping(t_uint256,t_uint256)",
             "contract": "Asset",
-            "src": "contracts/Asset.sol:34"
+            "src": "contracts/Asset.sol:35"
           },
           {
             "label": "serverPubKey",
@@ -221,7 +221,7 @@
             "slot": "210",
             "type": "t_address",
             "contract": "Handler",
-            "src": "contracts/Handler.sol:17"
+            "src": "contracts/Handler.sol:19"
           },
           {
             "label": "IState",
@@ -229,7 +229,7 @@
             "slot": "211",
             "type": "t_contract(IAssetIssuerState)7265",
             "contract": "Handler",
-            "src": "contracts/Handler.sol:18"
+            "src": "contracts/Handler.sol:20"
           }
         ],
         "types": {
