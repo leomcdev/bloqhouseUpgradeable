@@ -1,5 +1,6 @@
 const { ethers, upgrades } = require("hardhat");
 
+var owner, defaultadmin;
 async function setCNR() {
   const ChromiaNetResolver = await ethers.getContractFactory(
     "ChromiaNetResolver"
@@ -34,16 +35,14 @@ async function setHandler() {
   await handler.deployed();
   return handler;
 }
-// async function setProxyContract() {
-//   const Proxy = await ethers.getContractFactory("AssetProxy");
-//   const proxy = await upgrades.deployProxy(
-//     Proxy,
-//     [owner.address, handler.address],
-//     { initializer: "initialize" }
-//   );
-//   await proxy.deployed();
-//   return proxy;
-// }
+async function setProxyContract() {
+  const Proxy = await ethers.getContractFactory("AssetProxy");
+  const proxy = await upgrades.deployProxy(Proxy, [owner, defaultadmin], {
+    initializer: "initialize",
+  });
+  await proxy.deployed();
+  return proxy;
+}
 // async function setWhitelist(_default_admin) {
 //   const Whitelist = await ethers.getContractFactory("Whitelist");
 //   const whitelist = await Whitelist.deploy(_default_admin);
@@ -73,4 +72,5 @@ module.exports = {
   setTestToken,
   setAsset,
   setHandler,
+  setProxyContract,
 };

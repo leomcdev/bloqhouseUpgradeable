@@ -22,10 +22,10 @@ describe("Whitelist", function () {
     );
     await proxy.deployed();
 
-    let HANDLER = await handler.HANDLER();
+    let HANDLER = await proxy.HANDLER();
     await proxy.grantRole(HANDLER, provider.address);
 
-    let ADMIN = await handler.ADMIN();
+    let ADMIN = await proxy.ADMIN();
     await proxy.grantRole(ADMIN, owner.address);
   });
   it("Should work", async function () {
@@ -37,11 +37,11 @@ describe("Whitelist", function () {
     );
     await proxy.deployed();
 
-    let HANDLER = await handler.HANDLER();
+    let HANDLER = await proxy.HANDLER();
     await proxy.grantRole(HANDLER, owner.address);
     await proxy.grantRole(HANDLER, provider.address);
 
-    let ADMIN = await handler.ADMIN();
+    let ADMIN = await proxy.ADMIN();
     await proxy.grantRole(ADMIN, owner.address);
     await proxy.grantRole(ADMIN, provider.address);
 

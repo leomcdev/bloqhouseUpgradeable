@@ -693,8 +693,8 @@
       ]
     },
     "/Users/leo/Desktop/bloqhouse/contracts/AssetHandler.sol": {
-      "lastModificationDate": 1667471315466,
-      "contentHash": "5af1a2bcf92c7d2e37666897f3bb6816",
+      "lastModificationDate": 1667476171610,
+      "contentHash": "1d7ff1141544fc09a7f24541c3254058",
       "sourceName": "contracts/AssetHandler.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -720,18 +720,9 @@
           }
         }
       },
-      "imports": [
-        "@openzeppelin/contracts/security/Pausable.sol",
-        "@openzeppelin/contracts/access/AccessControl.sol",
-        "@openzeppelin/contracts/token/ERC20/IERC20.sol",
-        "../interfaces/IAssetIssuerState.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.4"
-      ],
-      "artifacts": [
-        "AssetHandler"
-      ]
+      "imports": [],
+      "versionPragmas": [],
+      "artifacts": []
     },
     "/Users/leo/Desktop/bloqhouse/node_modules/@openzeppelin/contracts/access/AccessControl.sol": {
       "lastModificationDate": 1667384810575,
@@ -1342,8 +1333,8 @@
       ]
     },
     "/Users/leo/Desktop/bloqhouse/contracts/AssetIssuerState.sol": {
-      "lastModificationDate": 1667403359635,
-      "contentHash": "4bea2a9b5bf6bf5bbda9efff1c080a92",
+      "lastModificationDate": 1667476212355,
+      "contentHash": "5859a9f6100205a52cf55cd489cdc897",
       "sourceName": "contracts/AssetIssuerState.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -1369,18 +1360,9 @@
           }
         }
       },
-      "imports": [
-        "@openzeppelin/contracts/access/AccessControl.sol",
-        "@openzeppelin/contracts/token/ERC721/ERC721.sol",
-        "@openzeppelin/contracts/token/ERC20/IERC20.sol",
-        "../interfaces/ICNR.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.4"
-      ],
-      "artifacts": [
-        "AssetIssuerState"
-      ]
+      "imports": [],
+      "versionPragmas": [],
+      "artifacts": []
     },
     "/Users/leo/Desktop/bloqhouse/contracts/helpers/testToken.sol": {
       "lastModificationDate": 1667377906467,
