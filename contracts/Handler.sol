@@ -116,8 +116,6 @@ contract Handler is Asset {
         _setAssetTransfersPaused(_assetId, _paused);
     }
 
-    // ----- NEED TO FIX PAUSABLE ----
-
     function pauseHandler() external onlyRole(ADMIN) {
         _pause();
     }
