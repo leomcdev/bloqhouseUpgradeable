@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/leo/Desktop/bloqhouse/contracts/Asset.sol": {
-      "lastModificationDate": 1667479133722,
-      "contentHash": "51c47d5eac422bd205d8c5171f0ca336",
+      "lastModificationDate": 1667480986480,
+      "contentHash": "ede2938022e59634f6eb6d884c26498e",
       "sourceName": "contracts/Asset.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -34,6 +34,7 @@
         "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol",
         "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol",
         "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+        "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol",
         "../interfaces/ICNR.sol"
       ],
       "versionPragmas": [
@@ -648,8 +649,8 @@
       ]
     },
     "/Users/leo/Desktop/bloqhouse/contracts/Handler.sol": {
-      "lastModificationDate": 1667480013700,
-      "contentHash": "ef4e1d8f463488cd0ea5a6945251791a",
+      "lastModificationDate": 1667481084343,
+      "contentHash": "45293d73b2e4633a102614b01f597be2",
       "sourceName": "contracts/Handler.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -1437,6 +1438,45 @@
       ],
       "artifacts": [
         "AssetProxy"
+      ]
+    },
+    "/Users/leo/Desktop/bloqhouse/node_modules/@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol": {
+      "lastModificationDate": 1667387642415,
+      "contentHash": "cbe53d6b803c1102081e00b3a0418ea3",
+      "sourceName": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../utils/ContextUpgradeable.sol",
+        "../proxy/utils/Initializable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "PausableUpgradeable"
       ]
     }
   }

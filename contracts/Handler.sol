@@ -17,12 +17,11 @@ contract Handler is Asset {
 
     address private serverPubKey;
     IAssetIssuerState IState;
-    bool paused;
 
-    modifier whenNotPaused() {
-        require(!paused, "Pausable: paused");
-        _;
-    }
+    // modifier whenNotPaused() {
+    //     require(!paused, "Pausable: paused");
+    //     _;
+    // }
 
     function initalizeAddr(IAssetIssuerState _IState)
         internal
@@ -129,11 +128,11 @@ contract Handler is Asset {
 
     // ----- NEED TO FIX PAUSABLE ----
 
-    function pauseHandler(bool _pause) external onlyRole(ADMIN) {
-        paused = _pause;
+    function pauseHandler() external onlyRole(ADMIN) {
+        _pause();
     }
 
-    function unpauseHandler(bool _unpause) external onlyRole(ADMIN) {
-        paused = _unpause;
+    function unpauseHandler() external onlyRole(ADMIN) {
+        _unpause();
     }
 }

@@ -2,7 +2,7 @@
   "manifestVersion": "3.2",
   "admin": {
     "address": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
-    "txHash": "0x26e8d4639c7c9e5cf97b09c58c69582062767dd8e86497a160188b244851dd83"
+    "txHash": "0x6c584b5bfd038ec41136ba0b5b4904da3e9f1aea8d52d330aafe3a6fb2acf6a8"
   },
   "proxies": [
     {
@@ -22,19 +22,19 @@
     },
     {
       "address": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
-      "txHash": "0x9f8e8061e3b50e4858d96f79ba4db70d18bd5ffbad3723252dce859660ad5ad7",
+      "txHash": "0x38c8a81608b08e381c8d079f4cf8ecb9b559c9b983b722a003c14e73343838ba",
       "kind": "transparent"
     },
     {
       "address": "0x8A791620dd6260079BF849Dc5567aDC3F2FdC318",
-      "txHash": "0x8ffbea6beab9737ba2bbba258c87b6fd951822358db56a3f877d8722293c9edd",
+      "txHash": "0x5f7ba972667079bafdbd976c3086fedb21f43ce3cec41771bb93c94b23678838",
       "kind": "transparent"
     }
   ],
   "impls": {
-    "93b63116250e9d5ca4f8d69278850e3b9dc85622518f95ec6a905ac5e787b37a": {
+    "d746ddd2a35d741c06a3d106b443ad9b23a6e3fe4d3556bd5915e7e3824ae568": {
       "address": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
-      "txHash": "0x7e6cfdbfc49bacbf9ce9e949e1dd184d4ad801705ef9b0bf2f2f98d7e82620b4",
+      "txHash": "0x7f85192dfee8b8e3d21b9db011c940d18b02d553127d26ebc77b11261a5b5700",
       "layout": {
         "solcVersion": "0.8.4",
         "storage": [
@@ -144,81 +144,105 @@
             "src": "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol:259"
           },
           {
-            "label": "CNR",
+            "label": "_paused",
             "offset": 0,
             "slot": "201",
-            "type": "t_contract(ICNR)4494",
-            "contract": "Asset",
-            "src": "contracts/Asset.sol:23"
+            "type": "t_bool",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:29"
           },
           {
-            "label": "isWhitelisted",
+            "label": "__gap",
             "offset": 0,
             "slot": "202",
-            "type": "t_mapping(t_address,t_bool)",
-            "contract": "Asset",
-            "src": "contracts/Asset.sol:24"
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "PausableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:116"
           },
           {
-            "label": "pausedTransfers",
+            "label": "CNR",
             "offset": 0,
-            "slot": "203",
-            "type": "t_bool",
-            "contract": "Asset",
-            "src": "contracts/Asset.sol:26"
-          },
-          {
-            "label": "assetPaused",
-            "offset": 0,
-            "slot": "204",
-            "type": "t_mapping(t_uint256,t_bool)",
-            "contract": "Asset",
-            "src": "contracts/Asset.sol:27"
-          },
-          {
-            "label": "nextId",
-            "offset": 0,
-            "slot": "205",
-            "type": "t_mapping(t_uint256,t_uint256)",
+            "slot": "251",
+            "type": "t_contract(ICNR)4610",
             "contract": "Asset",
             "src": "contracts/Asset.sol:29"
           },
           {
-            "label": "lastId",
+            "label": "isWhitelisted",
             "offset": 0,
-            "slot": "206",
-            "type": "t_mapping(t_uint256,t_uint256)",
+            "slot": "252",
+            "type": "t_mapping(t_address,t_bool)",
             "contract": "Asset",
             "src": "contracts/Asset.sol:30"
           },
           {
-            "label": "assetRevToken",
+            "label": "pausedTransfers",
             "offset": 0,
-            "slot": "207",
-            "type": "t_mapping(t_uint256,t_contract(IERC20Upgradeable)641)",
+            "slot": "253",
+            "type": "t_bool",
             "contract": "Asset",
             "src": "contracts/Asset.sol:32"
           },
           {
-            "label": "totalShareRev",
+            "label": "assetPaused",
             "offset": 0,
-            "slot": "208",
-            "type": "t_mapping(t_uint256,t_uint256)",
+            "slot": "254",
+            "type": "t_mapping(t_uint256,t_bool)",
             "contract": "Asset",
             "src": "contracts/Asset.sol:33"
           },
           {
-            "label": "claimedRev",
+            "label": "nextId",
             "offset": 0,
-            "slot": "209",
+            "slot": "255",
             "type": "t_mapping(t_uint256,t_uint256)",
             "contract": "Asset",
-            "src": "contracts/Asset.sol:34"
+            "src": "contracts/Asset.sol:35"
+          },
+          {
+            "label": "lastId",
+            "offset": 0,
+            "slot": "256",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "Asset",
+            "src": "contracts/Asset.sol:36"
+          },
+          {
+            "label": "assetRevToken",
+            "offset": 0,
+            "slot": "257",
+            "type": "t_mapping(t_uint256,t_contract(IERC20Upgradeable)768)",
+            "contract": "Asset",
+            "src": "contracts/Asset.sol:38"
+          },
+          {
+            "label": "totalShareRev",
+            "offset": 0,
+            "slot": "258",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "Asset",
+            "src": "contracts/Asset.sol:39"
+          },
+          {
+            "label": "claimedRev",
+            "offset": 0,
+            "slot": "259",
+            "type": "t_mapping(t_uint256,t_uint256)",
+            "contract": "Asset",
+            "src": "contracts/Asset.sol:40"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "260",
+            "type": "t_array(t_uint256)1000_storage",
+            "contract": "Asset",
+            "src": "contracts/Asset.sol:202"
           },
           {
             "label": "serverPubKey",
             "offset": 0,
-            "slot": "210",
+            "slot": "1260",
             "type": "t_address",
             "contract": "Handler",
             "src": "contracts/Handler.sol:18"
@@ -226,24 +250,20 @@
           {
             "label": "IState",
             "offset": 0,
-            "slot": "211",
-            "type": "t_contract(IAssetIssuerState)4482",
+            "slot": "1261",
+            "type": "t_contract(IAssetIssuerState)4598",
             "contract": "Handler",
             "src": "contracts/Handler.sol:19"
-          },
-          {
-            "label": "paused",
-            "offset": 20,
-            "slot": "211",
-            "type": "t_bool",
-            "contract": "Handler",
-            "src": "contracts/Handler.sol:20"
           }
         ],
         "types": {
           "t_address": {
             "label": "address",
             "numberOfBytes": "20"
+          },
+          "t_array(t_uint256)1000_storage": {
+            "label": "uint256[1000]",
+            "numberOfBytes": "32000"
           },
           "t_array(t_uint256)44_storage": {
             "label": "uint256[44]",
@@ -265,15 +285,15 @@
             "label": "bytes32",
             "numberOfBytes": "32"
           },
-          "t_contract(IAssetIssuerState)4482": {
+          "t_contract(IAssetIssuerState)4598": {
             "label": "contract IAssetIssuerState",
             "numberOfBytes": "20"
           },
-          "t_contract(ICNR)4494": {
+          "t_contract(ICNR)4610": {
             "label": "contract ICNR",
             "numberOfBytes": "20"
           },
-          "t_contract(IERC20Upgradeable)641": {
+          "t_contract(IERC20Upgradeable)768": {
             "label": "contract IERC20Upgradeable",
             "numberOfBytes": "20"
           },
@@ -301,7 +321,7 @@
             "label": "mapping(uint256 => bool)",
             "numberOfBytes": "32"
           },
-          "t_mapping(t_uint256,t_contract(IERC20Upgradeable)641)": {
+          "t_mapping(t_uint256,t_contract(IERC20Upgradeable)768)": {
             "label": "mapping(uint256 => contract IERC20Upgradeable)",
             "numberOfBytes": "32"
           },

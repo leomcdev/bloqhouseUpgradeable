@@ -6,13 +6,19 @@ import "@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
 
 import "../interfaces/ICNR.sol";
 
 // ------------ upgradeable contract
 
 // execution contract
-contract Asset is Initializable, ERC721Upgradeable, AccessControlUpgradeable {
+contract Asset is
+    Initializable,
+    ERC721Upgradeable,
+    AccessControlUpgradeable,
+    PausableUpgradeable
+{
     // function initializeAsset() internal onlyInitializing {
     //     __ERC721_init("name", "symbol");
     //     // CNR?
@@ -192,4 +198,6 @@ contract Asset is Initializable, ERC721Upgradeable, AccessControlUpgradeable {
     {
         return super.supportsInterface(interfaceId);
     }
+
+    uint256[1000] private __gap;
 }
