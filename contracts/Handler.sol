@@ -6,18 +6,23 @@ import "@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import "@openzeppelin/contracts/security/Pausable.sol";
 
 import "./Asset.sol";
 import "../interfaces/IAssetIssuerState.sol";
 
 // ------------ upgradeable contract
 
-contract Handler is Initializable, Asset {
+contract Handler is Asset {
     bytes32 public constant ADMIN = keccak256("ADMIN");
 
     address private serverPubKey;
     IAssetIssuerState IState;
+    bool paused;
+
+    modifier whenNotPaused() {
+        require(!paused, "Pausable: paused");
+        _;
+    }
 
     function initalizeAddr(IAssetIssuerState _IState)
         internal
@@ -61,7 +66,7 @@ contract Handler is Initializable, Asset {
         uint8 _v,
         bytes32 _r,
         bytes32 _s
-    ) external {
+    ) external whenNotPaused {
         bytes memory message = abi.encode(msg.sender, address(this), _tokenIds);
         require(
             ecrecover(
@@ -102,6 +107,7 @@ contract Handler is Initializable, Asset {
 
     function claimRevenue(uint256 _assetId, uint256[] calldata _tokenIds)
         external
+        whenNotPaused
     {
         _claimRevenue(msg.sender, _assetId, _tokenIds);
     }
@@ -120,13 +126,14 @@ contract Handler is Initializable, Asset {
     {
         _setAssetTransfersPaused(_assetId, _paused);
     }
+
     // ----- NEED TO FIX PAUSABLE ----
 
-    // function pauseHandler() external onlyRole(ADMIN) {
-    //     _pause();
-    // }
+    function pauseHandler(bool _pause) external onlyRole(ADMIN) {
+        paused = _pause;
+    }
 
-    // function unpauseHandler() external onlyRole(ADMIN) {
-    //     _unpause();
-    // }
+    function unpauseHandler(bool _unpause) external onlyRole(ADMIN) {
+        paused = _unpause;
+    }
 }

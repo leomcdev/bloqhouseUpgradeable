@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/leo/Desktop/bloqhouse/contracts/Asset.sol": {
-      "lastModificationDate": 1667472326805,
-      "contentHash": "0d1c669c526e3d0bdc2c005b932788f3",
+      "lastModificationDate": 1667479133722,
+      "contentHash": "51c47d5eac422bd205d8c5171f0ca336",
       "sourceName": "contracts/Asset.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -34,7 +34,6 @@
         "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol",
         "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol",
         "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
-        "@openzeppelin/contracts/security/Pausable.sol",
         "../interfaces/ICNR.sol"
       ],
       "versionPragmas": [
@@ -649,8 +648,8 @@
       ]
     },
     "/Users/leo/Desktop/bloqhouse/contracts/Handler.sol": {
-      "lastModificationDate": 1667472081874,
-      "contentHash": "b52a8909f3a7bde37e9c8a59e0a4d475",
+      "lastModificationDate": 1667480013700,
+      "contentHash": "ef4e1d8f463488cd0ea5a6945251791a",
       "sourceName": "contracts/Handler.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -681,7 +680,6 @@
         "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol",
         "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol",
         "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
-        "@openzeppelin/contracts/security/Pausable.sol",
         "./Asset.sol",
         "../interfaces/IAssetIssuerState.sol"
       ],
