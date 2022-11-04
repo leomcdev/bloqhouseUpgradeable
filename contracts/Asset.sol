@@ -19,6 +19,7 @@ contract Asset is
     AccessControlUpgradeable,
     PausableUpgradeable
 {
+    // needs to be initialized or disabled
     // function initializeAsset() internal onlyInitializing {
     //     __ERC721_init("name", "symbol");
     //     // CNR?
