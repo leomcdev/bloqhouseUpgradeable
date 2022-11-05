@@ -7,11 +7,24 @@ import "../interfaces/IAssetIssuerState.sol";
 
 // ------------ upgradeable contract
 
-contract Handler is Asset {
+contract RWAT is Asset {
     bytes32 public constant ADMIN = keccak256("ADMIN");
 
     address private serverPubKey;
     IAssetIssuerState IState;
+
+    function initialize(address _default_admin, IAssetIssuerState _IState)
+        external
+        initializer
+    {
+        __AccessControl_init();
+        _setupRole(DEFAULT_ADMIN_ROLE, _default_admin);
+        __Pausable_init();
+
+        initalizeAddr(_IState);
+
+        initializeName();
+    }
 
     function initalizeAddr(IAssetIssuerState _IState)
         internal
@@ -116,11 +129,13 @@ contract Handler is Asset {
         _setAssetTransfersPaused(_assetId, _paused);
     }
 
-    function pauseHandler() external onlyRole(ADMIN) {
+    // previous handler
+    function pause() external onlyRole(ADMIN) {
         _pause();
     }
 
-    function unpauseHandler() external onlyRole(ADMIN) {
+    // previous handler
+    function unpause() external onlyRole(ADMIN) {
         _unpause();
     }
 }

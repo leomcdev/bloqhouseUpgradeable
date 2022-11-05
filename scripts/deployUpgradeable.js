@@ -12,21 +12,20 @@ async function main() {
   await asset.deployed();
   console.log("asset Contract deployed to:", asset.address);
 
-  const Handler = await ethers.getContractFactory("Handler");
-  const handler = await Handler.deploy();
-  await handler.deployed();
-  console.log("handler Contract deployed to:", handler.address);
-
-  const Proxy = await ethers.getContractFactory("AssetProxy");
-  const proxy = await upgrades.deployProxy(
-    Proxy,
-    [owner.address, handler.address],
+  const RWAT = await ethers.getContractFactory("RWAT");
+  const rwat = await upgrades.deployProxy(
+    RWAT,
+    [owner.address, asset.address],
     { initializer: "initialize" }
   );
-  await proxy.deployed();
-  console.log("proxy Contract deployed to:", proxy.address);
+  await rwat.deployed();
+  console.log("proxy Contract deployed to:", rwat.address);
 
   console.log("owner address", owner.address);
+  await rwat.grantRole(
+    ethers.utils.keccak256(ethers.utils.toUtf8Bytes("ADMIN")),
+    owner.address
+  );
 }
 
 main()

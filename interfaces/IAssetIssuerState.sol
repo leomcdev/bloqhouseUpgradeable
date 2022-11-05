@@ -53,4 +53,7 @@ interface IAssetIssuerState {
     function setTransfersPaused(bool _paused) external;
 
     function setAssetTransfersPaused(uint256 _assetId, bool _paused) external;
+
+    function initializeName(string memory _name, string memory _symbol)
+        external;
 }

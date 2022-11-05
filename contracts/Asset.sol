@@ -11,6 +11,7 @@ import "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
 import "../interfaces/ICNR.sol";
 
 // ------------ upgradeable contract
+//RDWAPROTOCOL
 
 // execution contract
 contract Asset is
@@ -20,12 +21,10 @@ contract Asset is
     PausableUpgradeable
 {
     // needs to be initialized or disabled
-    // function initializeAsset() internal onlyInitializing {
-    //     __ERC721_init("name", "symbol");
-    //     // CNR?
-    // }
-
-    bytes32 public constant HANDLER = keccak256("HANDLER");
+    function initializeName() internal onlyInitializing {
+        __ERC721_init("Bloqhouse", "Bloq");
+        // CNR?
+    }
 
     ICNR private CNR;
     mapping(address => bool) public isWhitelisted;
@@ -44,7 +43,7 @@ contract Asset is
         uint256 _assetId,
         uint256 _tokenCap,
         IERC20Upgradeable _revToken
-    ) internal onlyRole(DEFAULT_ADMIN_ROLE) {
+    ) internal {
         require(nextId[_assetId] == 0, "Asset already exists");
         assetRevToken[_assetId] = _revToken;
         nextId[_assetId] = _assetId * 1_000_000_000;
@@ -53,7 +52,6 @@ contract Asset is
 
     function _updateAssetTokenCap(uint256 _assetId, uint256 _tokenCap)
         internal
-        onlyRole(HANDLER)
     {
         require(
             nextId[_assetId] <= _assetId * 1_000_000_000 + _tokenCap,
@@ -66,7 +64,7 @@ contract Asset is
         uint256 _assetId,
         uint256 _amount,
         address _to
-    ) internal onlyRole(HANDLER) {
+    ) internal {
         require(
             (nextId[_assetId] + _amount) <= lastId[_assetId],
             "Amount exceeds max"
@@ -79,7 +77,6 @@ contract Asset is
 
     function _setWhitelisted(address[] calldata _users, bool _whitelisted)
         internal
-        onlyRole(HANDLER)
     {
         uint256 length = _users.length;
         for (uint256 i = 0; i < length; i++) {
@@ -87,7 +84,6 @@ contract Asset is
         }
     }
 
-    // removed onlyrole handler...
     function _claimUnits(
         address _from,
         address _to,
@@ -99,7 +95,6 @@ contract Asset is
         }
     }
 
-    // removed onlyrole handler...
     function _setClaimed(
         uint256 _assetId,
         uint256[] calldata _tokenIds,
@@ -120,7 +115,7 @@ contract Asset is
         uint256 _assetId,
         uint256 _totalRev,
         uint256 _amountPerToken
-    ) internal onlyRole(HANDLER) {
+    ) internal {
         totalShareRev[_assetId] += _amountPerToken;
         assetRevToken[_assetId].transferFrom(_from, address(this), _totalRev);
     }
@@ -129,7 +124,7 @@ contract Asset is
         address _owner,
         uint256 _assetId,
         uint256[] calldata _tokenIds
-    ) internal onlyRole(HANDLER) {
+    ) internal {
         require(isWhitelisted[_owner], "Owner is not whitelisted");
         uint256 totalToGet;
         uint256 length = _tokenIds.length;
@@ -146,14 +141,11 @@ contract Asset is
         assetRevToken[_assetId].transferFrom(address(this), _owner, totalToGet);
     }
 
-    function _setTransfersPaused(bool _paused) internal onlyRole(HANDLER) {
+    function _setTransfersPaused(bool _paused) internal {
         pausedTransfers = _paused;
     }
 
-    function _setAssetTransfersPaused(uint256 _assetId, bool _paused)
-        internal
-        onlyRole(HANDLER)
-    {
+    function _setAssetTransfersPaused(uint256 _assetId, bool _paused) internal {
         assetPaused[_assetId] = _paused;
     }
 

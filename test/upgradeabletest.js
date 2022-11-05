@@ -3,7 +3,7 @@ const help = require("./upgradeable_helper_functions.js");
 const { ethers, upgrades } = require("hardhat");
 
 describe("Whitelist", function () {
-  let owner, provider, investor, asset, handler, testToken;
+  let owner, provider, investor, asset, testToken;
 
   beforeEach(async function () {
     [owner, provider, investor] = await ethers.getSigners();
@@ -12,34 +12,25 @@ describe("Whitelist", function () {
 
     asset = await help.setAsset();
 
-    handler = await help.setHandler(asset.address);
-
-    const Proxy = await ethers.getContractFactory("AssetProxy");
+    const Proxy = await ethers.getContractFactory("RWAT");
     const proxy = await upgrades.deployProxy(
       Proxy,
-      [owner.address, handler.address],
+      [owner.address, asset.address],
       { initializer: "initialize" }
     );
     await proxy.deployed();
-
-    let HANDLER = await proxy.HANDLER();
-    await proxy.grantRole(HANDLER, provider.address);
 
     let ADMIN = await proxy.ADMIN();
     await proxy.grantRole(ADMIN, owner.address);
   });
   it("Should work", async function () {
-    const Proxy = await ethers.getContractFactory("AssetProxy");
+    const Proxy = await ethers.getContractFactory("RWAT");
     const proxy = await upgrades.deployProxy(
       Proxy,
-      [owner.address, handler.address],
+      [owner.address, asset.address],
       { initializer: "initialize" }
     );
     await proxy.deployed();
-
-    let HANDLER = await proxy.HANDLER();
-    await proxy.grantRole(HANDLER, owner.address);
-    await proxy.grantRole(HANDLER, provider.address);
 
     let ADMIN = await proxy.ADMIN();
     await proxy.grantRole(ADMIN, owner.address);
@@ -63,6 +54,12 @@ describe("Whitelist", function () {
 
     expect(await proxy.ownerOf(1000000002)).to.be.equal(investor.address);
     console.log(await proxy.balanceOf(investor.address));
+
+    console.log(
+      "hash admin",
+      ethers.utils.keccak256(ethers.utils.toUtf8Bytes("ADMIN")),
+      proxy.address
+    );
   });
 
   async function createSignature(obj) {
