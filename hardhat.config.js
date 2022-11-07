@@ -38,7 +38,12 @@ module.exports = {
     //   allowUnlimitedContractSize: true,
     // },
   },
-
+  settings: {
+    optimizer: {
+      enabled: true,
+      runs: 200,
+    },
+  },
   gasReporter: {
     currency: "USD",
     token: "BNB",

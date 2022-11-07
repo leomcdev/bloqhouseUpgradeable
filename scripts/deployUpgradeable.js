@@ -1,6 +1,8 @@
 require("dotenv").config();
 const path = require("path");
 
+CNR = "0x0cadb0d9e410072325d2acc00aab99eb795a8c86";
+
 const { ethers, upgrades } = require("hardhat");
 
 async function main() {
@@ -15,7 +17,7 @@ async function main() {
   const RWAT = await ethers.getContractFactory("RWAT");
   const rwat = await upgrades.deployProxy(
     RWAT,
-    [owner.address, asset.address],
+    [owner.address, asset.address, CNR],
     { initializer: "initialize" }
   );
   await rwat.deployed();

@@ -10,20 +10,18 @@ import "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
 
 import "../interfaces/ICNR.sol";
 
-// ------------ upgradeable contract
-//RDWAPROTOCOL
-
-// execution contract
 contract Asset is
     Initializable,
     ERC721Upgradeable,
     AccessControlUpgradeable,
     PausableUpgradeable
 {
-    // needs to be initialized or disabled
     function initializeName() internal onlyInitializing {
         __ERC721_init("Bloqhouse", "Bloq");
-        // CNR?
+    }
+
+    function initializeCNR(ICNR _CNR) internal onlyInitializing {
+        CNR = _CNR;
     }
 
     ICNR private CNR;

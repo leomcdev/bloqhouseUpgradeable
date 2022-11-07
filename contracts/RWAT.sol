@@ -5,32 +5,24 @@ pragma solidity ^0.8.4;
 import "./Asset.sol";
 import "../interfaces/IAssetIssuerState.sol";
 
-// ------------ upgradeable contract
-
 contract RWAT is Asset {
     bytes32 public constant ADMIN = keccak256("ADMIN");
 
     address private serverPubKey;
     IAssetIssuerState IState;
 
-    function initialize(address _default_admin, IAssetIssuerState _IState)
-        external
-        initializer
-    {
+    function initialize(
+        address _default_admin,
+        IAssetIssuerState _IState,
+        ICNR _CNR
+    ) external initializer {
         __AccessControl_init();
         _setupRole(DEFAULT_ADMIN_ROLE, _default_admin);
+
         __Pausable_init();
-
-        initalizeAddr(_IState);
-
-        initializeName();
-    }
-
-    function initalizeAddr(IAssetIssuerState _IState)
-        internal
-        onlyInitializing
-    {
         IState = _IState;
+        initializeName();
+        initializeCNR(_CNR);
     }
 
     function setWhitelisted(address[] calldata _users, bool _isWhitelisted)
@@ -129,12 +121,10 @@ contract RWAT is Asset {
         _setAssetTransfersPaused(_assetId, _paused);
     }
 
-    // previous handler
     function pause() external onlyRole(ADMIN) {
         _pause();
     }
 
-    // previous handler
     function unpause() external onlyRole(ADMIN) {
         _unpause();
     }

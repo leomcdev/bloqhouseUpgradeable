@@ -2,6 +2,8 @@ const { expect } = require("chai");
 const help = require("./upgradeable_helper_functions.js");
 const { ethers, upgrades } = require("hardhat");
 
+CNR = "0x0cadb0d9e410072325d2acc00aab99eb795a8c86";
+
 describe("Whitelist", function () {
   let owner, provider, investor, asset, testToken;
 
@@ -12,53 +14,53 @@ describe("Whitelist", function () {
 
     asset = await help.setAsset();
 
-    const Proxy = await ethers.getContractFactory("RWAT");
-    const proxy = await upgrades.deployProxy(
-      Proxy,
-      [owner.address, asset.address],
+    const Rwat = await ethers.getContractFactory("RWAT");
+    const rwat = await upgrades.deployProxy(
+      Rwat,
+      [owner.address, asset.address, CNR],
       { initializer: "initialize" }
     );
-    await proxy.deployed();
+    await rwat.deployed();
 
-    let ADMIN = await proxy.ADMIN();
-    await proxy.grantRole(ADMIN, owner.address);
+    let ADMIN = await rwat.ADMIN();
+    await rwat.grantRole(ADMIN, owner.address);
   });
   it("Should work", async function () {
-    const Proxy = await ethers.getContractFactory("RWAT");
-    const proxy = await upgrades.deployProxy(
-      Proxy,
-      [owner.address, asset.address],
+    const Rwat = await ethers.getContractFactory("RWAT");
+    const rwat = await upgrades.deployProxy(
+      Rwat,
+      [owner.address, asset.address, CNR],
       { initializer: "initialize" }
     );
-    await proxy.deployed();
+    await rwat.deployed();
 
-    let ADMIN = await proxy.ADMIN();
-    await proxy.grantRole(ADMIN, owner.address);
-    await proxy.grantRole(ADMIN, provider.address);
+    let ADMIN = await rwat.ADMIN();
+    await rwat.grantRole(ADMIN, owner.address);
+    await rwat.grantRole(ADMIN, provider.address);
 
-    await proxy.createAsset(1, 100, testToken.address);
-    await proxy.mintAsset(1, 100);
-    await proxy.setWhitelisted([investor.address], true);
+    await rwat.createAsset(1, 100, testToken.address);
+    await rwat.mintAsset(1, 100);
+    await rwat.setWhitelisted([investor.address], true);
     console.log(investor.address);
     let units = [1000000000, 1000000001, 1000000002];
 
     let obj = ethers.utils.defaultAbiCoder.encode(
       ["address", "address", "uint[]"],
-      [investor.address, proxy.address, units]
+      [investor.address, rwat.address, units]
     );
     const { prefix, v, r, s } = await createSignature(obj);
 
-    await proxy.updateServer(provider.address);
+    await rwat.updateServer(provider.address);
 
-    await proxy.connect(investor).claimUnits(units, prefix, v, r, s);
+    await rwat.connect(investor).claimUnits(units, prefix, v, r, s);
 
-    expect(await proxy.ownerOf(1000000002)).to.be.equal(investor.address);
-    console.log(await proxy.balanceOf(investor.address));
+    expect(await rwat.ownerOf(1000000002)).to.be.equal(investor.address);
+    console.log(await rwat.balanceOf(investor.address));
 
     console.log(
       "hash admin",
       ethers.utils.keccak256(ethers.utils.toUtf8Bytes("ADMIN")),
-      proxy.address
+      rwat.address
     );
   });
 
