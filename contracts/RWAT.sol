@@ -3,25 +3,27 @@
 pragma solidity ^0.8.4;
 
 import "./Asset.sol";
-import "../interfaces/IAssetIssuerState.sol";
 
 contract RWAT is Asset {
     bytes32 public constant ADMIN = keccak256("ADMIN");
 
     address private serverPubKey;
-    IAssetIssuerState IState;
+    Asset assetState;
 
     function initialize(
         address _default_admin,
-        IAssetIssuerState _IState,
-        ICNR _CNR
+        Asset _assetState,
+        ICNR _CNR,
+        string memory name,
+        string memory symbol
     ) external initializer {
         __AccessControl_init();
         _setupRole(DEFAULT_ADMIN_ROLE, _default_admin);
-
         __Pausable_init();
-        IState = _IState;
-        initializeName();
+
+        assetState = _assetState;
+
+        initializeName(name, symbol);
         initializeCNR(_CNR);
     }
 
@@ -128,4 +130,6 @@ contract RWAT is Asset {
     function unpause() external onlyRole(ADMIN) {
         _unpause();
     }
+
+    uint256[1000] private __gap;
 }

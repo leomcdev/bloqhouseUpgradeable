@@ -16,8 +16,11 @@ contract Asset is
     AccessControlUpgradeable,
     PausableUpgradeable
 {
-    function initializeName() internal onlyInitializing {
-        __ERC721_init("Bloqhouse", "Bloq");
+    function initializeName(string memory _name, string memory _symbol)
+        internal
+        onlyInitializing
+    {
+        __ERC721_init(_name, _symbol);
     }
 
     function initializeCNR(ICNR _CNR) internal onlyInitializing {

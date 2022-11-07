@@ -17,11 +17,11 @@ async function main() {
   const RWAT = await ethers.getContractFactory("RWAT");
   const rwat = await upgrades.deployProxy(
     RWAT,
-    [owner.address, asset.address, CNR],
+    [owner.address, asset.address, CNR, "tokenName", "tokenSymbol"],
     { initializer: "initialize" }
   );
   await rwat.deployed();
-  console.log("proxy Contract deployed to:", rwat.address);
+  console.log("rwat Contract deployed to:", rwat.address);
 
   console.log("owner address", owner.address);
   await rwat.grantRole(

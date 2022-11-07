@@ -1,6 +1,6 @@
 const { ethers, upgrades } = require("hardhat");
 
-const PROXY = "";
+const PROXY = "0x4cD3C332E82a87EbdCC0b49B5A17B96CCd47810B";
 
 async function setProxy() {
   const C = await ethers.getContractFactory("RWAT");
@@ -21,5 +21,5 @@ main()
     process.exit(1);
   });
 
-// npx hardhat run scripts/upgradeProxy.js --network BSCTestnet
+// npx hardhat run scripts/upgrade.js --network BSCTestnet
 // npx hardhat verify --network BSCTestnet
