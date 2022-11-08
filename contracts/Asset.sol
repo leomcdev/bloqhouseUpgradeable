@@ -21,6 +21,12 @@ contract Asset is
      * state variables that are not stated as CONSTANTS are required to be declared with
      * the onlyInitalizing statement, to not interrupt the initialize call in the RWAT contract.
      */
+    // function initializeName(string memory _name, string memory _symbol)
+    //     internal
+    //     onlyInitializing
+    // {
+    //     __ERC721_init(_name, _symbol);
+    // }
 
     function initializeCNR(ICNR _CNR) internal onlyInitializing {
         CNR = _CNR;

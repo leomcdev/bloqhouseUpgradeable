@@ -27,11 +27,12 @@ contract RWAT is Asset {
     ) external initializer {
         __AccessControl_init();
         _setupRole(DEFAULT_ADMIN_ROLE, _default_admin);
-        __Pausable_init();
 
         __ERC721_init(name_, symbol_);
 
         initializeCNR(_CNR);
+
+        __Pausable_init();
     }
 
     function setWhitelisted(address[] calldata _users, bool _isWhitelisted)
@@ -130,6 +131,9 @@ contract RWAT is Asset {
         _addRevenue(msg.sender, _assetId, _totalRev, _amountPerShare);
     }
 
+    /**
+     * @notice User can claim its total revenue
+     */
     function claimRevenue(uint256 _assetId, uint256[] calldata _tokenIds)
         external
         whenNotPaused
@@ -141,10 +145,16 @@ contract RWAT is Asset {
         _updateServer(_serverPubKey);
     }
 
+    /**
+     * @notice Set transfers paused for the whole contract
+     */
     function setTransfersPaused(bool _paused) external onlyRole(ADMIN) {
         _setTransfersPaused(_paused);
     }
 
+    /**
+     * @notice Set transfers paused for a asset
+     */
     function setAssetTransfersPaused(uint256 _assetId, bool _paused)
         external
         onlyRole(ADMIN)
@@ -160,15 +170,18 @@ contract RWAT is Asset {
         _unpause();
     }
 
-    function changeNameAndSymbol(string memory _name, string memory _symbol)
-        external
+    /**
+     * @notice Set and update name and symbol after deployment!
+     */
+    function setNameAndSymbol(string memory _name, string memory _symbol)
+        public
         onlyRole(ADMIN)
     {
         name_ = _name;
         symbol_ = _symbol;
     }
 
-    function name() public view virtual override returns (string memory) {
+    function name() public view override returns (string memory) {
         return name_;
     }
 

@@ -12,8 +12,10 @@ async function main() {
   const RWAT = await ethers.getContractFactory("RWAT");
   const rwat = await upgrades.deployProxy(
     RWAT,
-    [owner.address, CNR, "tokenName", "tokenSymbol"],
-    { initializer: "initialize" }
+    [owner.address, CNR, "name", "tokenSymbol"],
+    {
+      initializer: "initialize",
+    }
   );
   await rwat.deployed();
   console.log("rwat Contract deployed to:", rwat.address);

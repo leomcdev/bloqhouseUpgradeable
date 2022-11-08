@@ -32,9 +32,9 @@
     }
   ],
   "impls": {
-    "7ac65660b79c9871a3bfcf2c3c6e5412a38efcce6f6a6184330ab6817be200d4": {
+    "7c2ebe8cf953078be39b6a0881fedf999814564f5b1a68062068170e4266fdc8": {
       "address": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
-      "txHash": "0xb9a6d0475626248bfe70c38fa2d96444f1b863d97999c582468f098537b52600",
+      "txHash": "0x32ded3ccfa448f95797792f3c4aa7df96d4b419fda3b24a55c7bcab52cc89c88",
       "layout": {
         "solcVersion": "0.8.4",
         "storage": [
@@ -163,9 +163,9 @@
             "label": "CNR",
             "offset": 0,
             "slot": "251",
-            "type": "t_contract(ICNR)3326",
+            "type": "t_contract(ICNR)3362",
             "contract": "Asset",
-            "src": "contracts/Asset.sol:30"
+            "src": "contracts/Asset.sol:35"
           },
           {
             "label": "isWhitelisted",
@@ -173,7 +173,7 @@
             "slot": "252",
             "type": "t_mapping(t_address,t_bool)",
             "contract": "Asset",
-            "src": "contracts/Asset.sol:31"
+            "src": "contracts/Asset.sol:36"
           },
           {
             "label": "pausedTransfers",
@@ -181,7 +181,7 @@
             "slot": "253",
             "type": "t_bool",
             "contract": "Asset",
-            "src": "contracts/Asset.sol:33"
+            "src": "contracts/Asset.sol:38"
           },
           {
             "label": "assetPaused",
@@ -189,7 +189,7 @@
             "slot": "254",
             "type": "t_mapping(t_uint256,t_bool)",
             "contract": "Asset",
-            "src": "contracts/Asset.sol:34"
+            "src": "contracts/Asset.sol:39"
           },
           {
             "label": "nextId",
@@ -197,7 +197,7 @@
             "slot": "255",
             "type": "t_mapping(t_uint256,t_uint256)",
             "contract": "Asset",
-            "src": "contracts/Asset.sol:36"
+            "src": "contracts/Asset.sol:41"
           },
           {
             "label": "lastId",
@@ -205,7 +205,7 @@
             "slot": "256",
             "type": "t_mapping(t_uint256,t_uint256)",
             "contract": "Asset",
-            "src": "contracts/Asset.sol:37"
+            "src": "contracts/Asset.sol:42"
           },
           {
             "label": "assetRevToken",
@@ -213,7 +213,7 @@
             "slot": "257",
             "type": "t_mapping(t_uint256,t_contract(IERC20Upgradeable)768)",
             "contract": "Asset",
-            "src": "contracts/Asset.sol:39"
+            "src": "contracts/Asset.sol:44"
           },
           {
             "label": "totalShareRev",
@@ -221,7 +221,7 @@
             "slot": "258",
             "type": "t_mapping(t_uint256,t_uint256)",
             "contract": "Asset",
-            "src": "contracts/Asset.sol:40"
+            "src": "contracts/Asset.sol:45"
           },
           {
             "label": "claimedRev",
@@ -229,31 +229,47 @@
             "slot": "259",
             "type": "t_mapping(t_uint256,t_uint256)",
             "contract": "Asset",
-            "src": "contracts/Asset.sol:41"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "260",
-            "type": "t_array(t_uint256)1000_storage",
-            "contract": "Asset",
-            "src": "contracts/Asset.sol:196"
+            "src": "contracts/Asset.sol:46"
           },
           {
             "label": "serverPubKey",
             "offset": 0,
-            "slot": "1260",
+            "slot": "260",
             "type": "t_address",
-            "contract": "RWAT",
-            "src": "contracts/RWAT.sol:10"
+            "contract": "Asset",
+            "src": "contracts/Asset.sol:48"
+          },
+          {
+            "label": "name_",
+            "offset": 0,
+            "slot": "261",
+            "type": "t_string_storage",
+            "contract": "Asset",
+            "src": "contracts/Asset.sol:49"
+          },
+          {
+            "label": "symbol_",
+            "offset": 0,
+            "slot": "262",
+            "type": "t_string_storage",
+            "contract": "Asset",
+            "src": "contracts/Asset.sol:50"
           },
           {
             "label": "__gap",
             "offset": 0,
-            "slot": "1261",
+            "slot": "263",
+            "type": "t_array(t_uint256)1000_storage",
+            "contract": "Asset",
+            "src": "contracts/Asset.sol:241"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "1263",
             "type": "t_array(t_uint256)1000_storage",
             "contract": "RWAT",
-            "src": "contracts/RWAT.sol:130"
+            "src": "contracts/RWAT.sol:172"
           }
         ],
         "types": {
@@ -285,7 +301,7 @@
             "label": "bytes32",
             "numberOfBytes": "32"
           },
-          "t_contract(ICNR)3326": {
+          "t_contract(ICNR)3362": {
             "label": "contract ICNR",
             "numberOfBytes": "20"
           },
