@@ -31,7 +31,6 @@ contract RWAT is Asset {
 
         __ERC721_init(name_, symbol_);
 
-        // initializeName(name_, symbol_);
         initializeCNR(_CNR);
     }
 
