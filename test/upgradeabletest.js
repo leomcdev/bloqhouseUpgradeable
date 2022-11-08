@@ -12,13 +12,15 @@ describe("Whitelist", function () {
     // CNR = await help.setCNR();
     testToken = await help.setTestToken();
 
-    asset = await help.setAsset();
+    // asset = await help.setAsset();
 
     const Rwat = await ethers.getContractFactory("RWAT");
     const rwat = await upgrades.deployProxy(
       Rwat,
-      [owner.address, asset.address, CNR],
-      { initializer: "initialize" }
+      [owner.address, CNR, "tokenName", "tokenSymbol"],
+      {
+        initializer: "initialize",
+      }
     );
     await rwat.deployed();
 
@@ -29,8 +31,10 @@ describe("Whitelist", function () {
     const Rwat = await ethers.getContractFactory("RWAT");
     const rwat = await upgrades.deployProxy(
       Rwat,
-      [owner.address, asset.address, CNR],
-      { initializer: "initialize" }
+      [owner.address, CNR, "tokenName", "tokenSymbol"],
+      {
+        initializer: "initialize",
+      }
     );
     await rwat.deployed();
 

@@ -16,6 +16,11 @@ contract Asset is
     AccessControlUpgradeable,
     PausableUpgradeable
 {
+    /**
+     * @notice Called first in the initialize (RWAT) contract upon deployment. Functions with
+     * state variables that are not stated as CONSTANTS are required to be declared with
+     * the onlyInitalizing statement, to not interrupt the initialize call in the RWAT contract.
+     */
     function initializeName(string memory _name, string memory _symbol)
         internal
         onlyInitializing
@@ -40,6 +45,14 @@ contract Asset is
     mapping(uint256 => uint256) public totalShareRev;
     mapping(uint256 => uint256) public claimedRev;
 
+    address serverPubKey;
+    string name_;
+    string symbol_;
+
+    /**
+     * @notice Creates the asset with a token cap.
+     * @dev 9 zeros are added.
+     */
     function _createAsset(
         uint256 _assetId,
         uint256 _tokenCap,
@@ -51,6 +64,9 @@ contract Asset is
         lastId[_assetId] = _assetId * 1_000_000_000 + _tokenCap;
     }
 
+    /**
+     * @notice Updates asset cap.
+     */
     function _updateAssetTokenCap(uint256 _assetId, uint256 _tokenCap)
         internal
     {
@@ -61,6 +77,10 @@ contract Asset is
         lastId[_assetId] = _assetId * 1_000_000_000 + _tokenCap;
     }
 
+    /**
+     * @notice Mints assets with respective ID as long as the max amount
+     * of minted assets has not been exceeded.
+     */
     function _mintAsset(
         uint256 _assetId,
         uint256 _amount,
@@ -76,6 +96,10 @@ contract Asset is
         }
     }
 
+    /**
+     * @notice Whitelists multiple users to be available for shares.
+     * @dev Also deWhitelists users by setting to false.
+     */
     function _setWhitelisted(address[] calldata _users, bool _whitelisted)
         internal
     {
@@ -85,6 +109,9 @@ contract Asset is
         }
     }
 
+    /**
+     * @notice User claim units.
+     */
     function _claimUnits(
         address _from,
         address _to,
@@ -96,6 +123,9 @@ contract Asset is
         }
     }
 
+    /**
+     * @notice Set units to claimed.
+     */
     function _setClaimed(
         uint256 _assetId,
         uint256[] calldata _tokenIds,
@@ -111,6 +141,9 @@ contract Asset is
         }
     }
 
+    /**
+     * @dev Add revenue into contract to later be added to the respecive assets.
+     */
     function _addRevenue(
         address _from,
         uint256 _assetId,
@@ -121,6 +154,10 @@ contract Asset is
         assetRevToken[_assetId].transferFrom(_from, address(this), _totalRev);
     }
 
+    /**
+     * @notice Calculates the revenue that each investor can claim.
+     * @dev Adds the new value into claimed rev and transfers the revenue to the owner.
+     */
     function _claimRevenue(
         address _owner,
         uint256 _assetId,
@@ -150,6 +187,14 @@ contract Asset is
         assetPaused[_assetId] = _paused;
     }
 
+    function _updateServer(address _serverPubKey) internal {
+        serverPubKey = _serverPubKey;
+    }
+
+    /**
+     * @notice Overrides the _beforeTokenTransfer in the ERC721Upgradeable contract
+     * @dev Checks state and that users are whitelisted.
+     */
     function _beforeTokenTransfer(
         address from,
         address to,

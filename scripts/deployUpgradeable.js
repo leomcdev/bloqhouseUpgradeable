@@ -9,15 +9,10 @@ async function main() {
   const [owner] = await ethers.getSigners();
   await ethers.getSigners();
 
-  const Asset = await ethers.getContractFactory("Asset");
-  const asset = await Asset.deploy();
-  await asset.deployed();
-  console.log("asset Contract deployed to:", asset.address);
-
   const RWAT = await ethers.getContractFactory("RWAT");
   const rwat = await upgrades.deployProxy(
     RWAT,
-    [owner.address, asset.address, CNR, "tokenName", "tokenSymbol"],
+    [owner.address, CNR, "tokenName", "tokenSymbol"],
     { initializer: "initialize" }
   );
   await rwat.deployed();

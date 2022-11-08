@@ -4,26 +4,32 @@ pragma solidity ^0.8.4;
 
 import "./Asset.sol";
 
+/**
+ * @title Real world asset tokenization contract to fractionalize real-estate into shares.
+ * @dev Should hold no data directly to be easily upgraded
+ *
+ * Upgrading this contract and adding new parent can be done while there is no dynamic
+ * state variables in this contract. All new inherited contracts must be appeneded
+ * to the currently inherited contracts.
+ */
 contract RWAT is Asset {
     bytes32 public constant ADMIN = keccak256("ADMIN");
 
-    address private serverPubKey;
-    Asset assetState;
-
+    /**
+     * @notice Called once to configure the contract after the initial deployment.
+     * @dev This handles the initialize call out to inherited contracts as needed.
+     */
     function initialize(
         address _default_admin,
-        Asset _assetState,
         ICNR _CNR,
-        string memory name,
-        string memory symbol
+        string memory name_,
+        string memory symbol_
     ) external initializer {
         __AccessControl_init();
         _setupRole(DEFAULT_ADMIN_ROLE, _default_admin);
         __Pausable_init();
 
-        assetState = _assetState;
-
-        initializeName(name, symbol);
+        initializeName(name_, symbol_);
         initializeCNR(_CNR);
     }
 
@@ -34,6 +40,10 @@ contract RWAT is Asset {
         _setWhitelisted(_users, _isWhitelisted);
     }
 
+    /**
+     * @notice Creates asset with with ID and tokenCap.
+     * @dev Adds 9 zeros to the ID.
+     */
     function createAsset(
         uint256 _assetId,
         uint256 _tokenCap,
@@ -42,6 +52,10 @@ contract RWAT is Asset {
         _createAsset(_assetId, _tokenCap, _revToken);
     }
 
+    /**
+     * @notice Updates the current asset cap.
+     * @dev 9 zeros are added.
+     */
     function updateAssetCap(uint256 _assetId, uint256 _tokenCap)
         external
         onlyRole(ADMIN)
@@ -49,6 +63,10 @@ contract RWAT is Asset {
         _updateAssetTokenCap(_assetId, _tokenCap);
     }
 
+    /**
+     * @notice Mints assets with respective ID as long as the max amount
+     * of minted assets has not been exceeded.
+     */
     function mintAsset(uint256 _assetId, uint256 _amount)
         external
         onlyRole(ADMIN)
@@ -56,6 +74,10 @@ contract RWAT is Asset {
         _mintAsset(_assetId, _amount, address(this));
     }
 
+    /**
+     * @notice Lets user claim their total share upon the current timeframe.
+     * @dev Requires server sig and the token asset to exist.
+     */
     function claimUnits(
         uint256[] calldata _tokenIds,
         bytes memory _prefix,
@@ -80,6 +102,9 @@ contract RWAT is Asset {
         _claimUnits(address(this), msg.sender, _tokenIds);
     }
 
+    /**
+     * @dev Returns the unit to this contract from a investor.
+     */
     function returnUnits(
         address _from,
         address _to,
@@ -88,6 +113,9 @@ contract RWAT is Asset {
         _claimUnits(_from, _to, _tokenIds);
     }
 
+    /**
+     * @notice Calculates and adds the revenue to a asset.
+     */
     function addRevenue(
         uint256 _assetId,
         uint256 _totalRev,
@@ -109,7 +137,7 @@ contract RWAT is Asset {
     }
 
     function updateServer(address _serverPubKey) external onlyRole(ADMIN) {
-        serverPubKey = _serverPubKey;
+        _updateServer(_serverPubKey);
     }
 
     function setTransfersPaused(bool _paused) external onlyRole(ADMIN) {
@@ -129,6 +157,22 @@ contract RWAT is Asset {
 
     function unpause() external onlyRole(ADMIN) {
         _unpause();
+    }
+
+    function changeNameAndSymbol(string memory _name, string memory _symbol)
+        external
+        onlyRole(ADMIN)
+    {
+        name_ = _name;
+        symbol_ = _symbol;
+    }
+
+    function name() public view virtual override returns (string memory) {
+        return name_;
+    }
+
+    function symbol() public view override returns (string memory) {
+        return symbol_;
     }
 
     uint256[1000] private __gap;
