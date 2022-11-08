@@ -29,7 +29,9 @@ contract RWAT is Asset {
         _setupRole(DEFAULT_ADMIN_ROLE, _default_admin);
         __Pausable_init();
 
-        initializeName(name_, symbol_);
+        __ERC721_init(name_, symbol_);
+
+        // initializeName(name_, symbol_);
         initializeCNR(_CNR);
     }
 
