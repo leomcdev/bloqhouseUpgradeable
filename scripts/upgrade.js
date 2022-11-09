@@ -1,6 +1,6 @@
 const { ethers, upgrades } = require("hardhat");
 
-const PROXY = "0x4cD3C332E82a87EbdCC0b49B5A17B96CCd47810B";
+const PROXY = "0x88B70d25c0dE89672aA02085B281244E13Df7A66";
 
 async function setProxy() {
   const C = await ethers.getContractFactory("RWAT");

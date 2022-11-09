@@ -102,10 +102,11 @@ contract RWAT is Asset {
         uint256 totalClaim = totalShareRev[assetId];
         _setClaimed(assetId, _tokenIds, totalClaim);
         _claimUnits(address(this), msg.sender, _tokenIds);
+        emit UnitsClaimed(msg.sender, _tokenIds);
     }
 
     /**
-     * @dev Returns the unit to this contract from a investor.
+     * @dev Returns the unit to this contract from an investor.
      */
     function returnUnits(
         address _from,
@@ -139,6 +140,7 @@ contract RWAT is Asset {
         whenNotPaused
     {
         _claimRevenue(msg.sender, _assetId, _tokenIds);
+        emit RevenueClaimed(msg.sender, _assetId, _tokenIds);
     }
 
     function updateServer(address _serverPubKey) external onlyRole(ADMIN) {

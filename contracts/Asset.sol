@@ -26,6 +26,10 @@ contract Asset is
         CNR = _CNR;
     }
 
+    // ------------ Events
+    event UnitsClaimed(address claimant, uint256[] tokenIds);
+    event RevenueClaimed(address claimant, uint256 assetId, uint256[] tokenIds);
+
     ICNR private CNR;
     mapping(address => bool) public isWhitelisted;
 
