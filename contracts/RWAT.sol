@@ -69,7 +69,7 @@ contract RWAT is
     mapping(uint256 => uint256) public totalShareEarnings;
     mapping(uint256 => uint256) public claimedEarnings;
 
-    mapping(uint256 => uint256) public assetIdToAssetCap;
+    mapping(uint256 => uint256) private assetIdToAssetCap;
 
     address serverPubKey;
     string name_;
