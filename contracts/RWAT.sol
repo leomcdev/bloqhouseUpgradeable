@@ -319,7 +319,7 @@ contract RWAT is
         return nextId[_assetId] - 1_000_000_000;
     }
 
-    function _getTokenAsset(uint256 _tokenId) public pure returns (uint256) {
+    function _getTokenAsset(uint256 _tokenId) internal pure returns (uint256) {
         return _tokenId / 1_000_000_000;
     }
 
