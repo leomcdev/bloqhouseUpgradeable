@@ -33,10 +33,6 @@ contract RWAT is
      * the onlyInitalizing statement, to not interrupt the initialize call in the RWAT contract.
      */
 
-    /**
-     * @notice Called once to configure the contract after the initial deployment.
-     * @dev This handles the initialize call out to inherited contracts as needed.
-     */
     function initialize(
         address _default_admin,
         ICNR _CNR,
@@ -48,12 +44,8 @@ contract RWAT is
 
         __ERC721_init(_name, _symbol);
 
-        initializeCNR(_CNR);
-        __Pausable_init();
-    }
-
-    function initializeCNR(ICNR _CNR) internal onlyInitializing {
         CNR = _CNR;
+        __Pausable_init();
     }
 
     // ------------ Events
