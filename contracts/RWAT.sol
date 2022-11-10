@@ -70,8 +70,8 @@ contract RWAT is
     bool pausedTransfers;
     mapping(uint256 => bool) public assetPaused;
 
-    mapping(uint256 => uint256) public nextId;
-    mapping(uint256 => uint256) public lastId;
+    mapping(uint256 => uint256) private nextId;
+    mapping(uint256 => uint256) private lastId;
 
     mapping(uint256 => IERC20Upgradeable) public assetEarningsToken;
     mapping(uint256 => uint256) public totalShareEarnings;
@@ -228,7 +228,7 @@ contract RWAT is
     }
 
     /**
-     * @notice Calculates and adds the Earningsenue to a asset.
+     * @notice Calculates and adds the Earnings to a asset.
      */
     function addEarnings(
         uint256 _assetId,
@@ -244,7 +244,7 @@ contract RWAT is
     }
 
     /**
-     * @dev Add Earningsenue into contract to later be added to the respecive assets.
+     * @dev Add Earnings into contract to later be added to the respecive assets.
      */
     function _addEarnings(
         address _from,
@@ -261,8 +261,8 @@ contract RWAT is
     }
 
     /**
-     * @notice Calculates the Earningsenue that each investor can claim.
-     * @dev Adds the new value into claimed Earnings and transfers the Earningsenue to the owner.
+     * @notice Calculates the Earnings that each investor can claim.
+     * @dev Adds the new value into claimed Earnings and transfers the Earnings to the owner.
      */
     function claimEarnings(
         address _owner,
@@ -317,7 +317,6 @@ contract RWAT is
      * @notice Get current asset cap
      */
     function getAssetCap(uint256 _assetId) public view returns (uint256) {
-        // require exists
         return assetIdToAssetCap[_assetId];
     }
 
@@ -325,7 +324,6 @@ contract RWAT is
      * @notice Get total minted assets in circulation
      */
     function getTotalMinted(uint256 _assetId) public view returns (uint256) {
-        // require exists
         return nextId[_assetId] - 1_000_000_000;
     }
 
