@@ -228,7 +228,7 @@ contract RWAT is
     }
 
     /**
-     * @notice Calculates and adds the Earnings to a asset.
+     * @notice Calculates and adds the earnings to a asset.
      */
     function addEarnings(
         uint256 _assetId,
@@ -244,7 +244,7 @@ contract RWAT is
     }
 
     /**
-     * @dev Add Earnings into contract to later be added to the respecive assets.
+     * @dev Add earnings into contract to later be added to the respecive assets.
      */
     function _addEarnings(
         address _from,
@@ -261,8 +261,8 @@ contract RWAT is
     }
 
     /**
-     * @notice Calculates the Earnings that each investor can claim.
-     * @dev Adds the new value into claimed Earnings and transfers the Earnings to the owner.
+     * @notice Calculates the earnings that each investor can claim.
+     * @dev Adds the new value into claimed earnings and transfers the earnings to the owner.
      */
     function claimEarnings(
         address _owner,
