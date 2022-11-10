@@ -42,7 +42,7 @@ contract Asset is
     mapping(uint256 => IERC20Upgradeable) public assetRevToken;
     mapping(uint256 => uint256) public totalShareRev;
     mapping(uint256 => uint256) public claimedRev;
-
+    // asset -> tokenid -> ownership
     address serverPubKey;
     string name_;
     string symbol_;
@@ -57,6 +57,10 @@ contract Asset is
         IERC20Upgradeable _revToken
     ) internal {
         require(nextId[_assetId] == 0, "Asset already exists");
+        require(
+            nextId[_assetId] < _tokenCap,
+            "Asset ID can't be higher than max token cap"
+        );
         assetRevToken[_assetId] = _revToken;
         nextId[_assetId] = _assetId * 1_000_000_000;
         lastId[_assetId] = _assetId * 1_000_000_000 + _tokenCap;
