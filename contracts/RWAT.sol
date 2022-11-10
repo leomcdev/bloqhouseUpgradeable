@@ -35,9 +35,9 @@ contract RWAT is
 
     function initialize(
         address _default_admin,
-        ICNR _CNR,
         string memory _name,
-        string memory _symbol
+        string memory _symbol,
+        ICNR _CNR
     ) external initializer {
         __AccessControl_init();
         _setupRole(DEFAULT_ADMIN_ROLE, _default_admin);

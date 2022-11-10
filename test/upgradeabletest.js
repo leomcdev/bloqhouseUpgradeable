@@ -15,7 +15,7 @@ describe("Whitelist", function () {
     const Rwat = await ethers.getContractFactory("RWAT");
     const rwat = await upgrades.deployProxy(
       Rwat,
-      [owner.address, CNR, "tokenName", "tokenSymbol"],
+      [owner.address, "tokenName", "tokenSymbol", CNR],
       {
         initializer: "initialize",
       }
@@ -29,7 +29,7 @@ describe("Whitelist", function () {
     const Rwat = await ethers.getContractFactory("RWAT");
     const rwat = await upgrades.deployProxy(
       Rwat,
-      [owner.address, CNR, "tokenName", "tokenSymbol"],
+      [owner.address, "tokenName", "tokenSymbol", CNR],
       {
         initializer: "initialize",
       }
