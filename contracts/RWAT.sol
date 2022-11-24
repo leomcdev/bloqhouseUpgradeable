@@ -134,7 +134,7 @@ contract RWAT is
     }
 
     /**
-     * @notice Lets user claim their total share upon the current timeframe.
+     * @notice Lets user claim units in the shape of nfts
      * @dev Requires server sig and the token asset to exist.
      */
     function claimUnits(
@@ -163,7 +163,7 @@ contract RWAT is
     }
 
     /**
-     * @dev Returns the unit to this contract from an investor.
+     * @dev Returns the unit from an investor.
      */
     function returnUnits(
         address _from,
@@ -188,7 +188,7 @@ contract RWAT is
     }
 
     /**
-     * @notice User claim units.
+     * @notice Used for users to claim units.
      */
     function _claimUnits(
         address _from,
@@ -232,6 +232,7 @@ contract RWAT is
             _totalEarnings / _unitsCount == _amountPerShare,
             "Invalid input data"
         );
+
         _addEarnings(msg.sender, _assetId, _totalEarnings, _amountPerShare);
     }
 
@@ -254,7 +255,7 @@ contract RWAT is
 
     /**
      * @notice Calculates the earnings that each investor can claim.
-     * @dev Adds the new value into claimed earnings and transfers the earnings to the owner.
+     * @dev Adds the new value into claimed earnings and transfers the earnings to the owner upon execution.
      */
     function claimEarnings(
         address _owner,
@@ -355,6 +356,7 @@ contract RWAT is
         if (!(from == address(0) || from == address(this))) {
             require(!pausedTransfers, "Transfers are currently paused");
             require(!assetPaused[_getTokenAsset(tokenId)], "Asset is paused");
+            // if sats corite
             require(
                 isWhitelisted[from] && isWhitelisted[to],
                 "Invalid token transfer"

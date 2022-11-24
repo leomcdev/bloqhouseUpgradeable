@@ -42,6 +42,7 @@ describe("Whitelist", function () {
 
     await rwat.createAsset(1, 300, testToken.address);
     await rwat.mintAsset(1, 100);
+
     console.log("total assets in circulation", await rwat.getTotalMinted(1));
     await rwat.setWhitelisted([investor.address], true);
     console.log(investor.address);
